@@ -3,14 +3,13 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const API = "http://localhost:5000";
+const API = "https://pc-store-server.vercel.app";
 
 export default function Product() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingId, setLoadingId] = useState(null);
   const router = useRouter();
-
 
   useEffect(() => {
     loadAllProducts();
@@ -24,12 +23,10 @@ export default function Product() {
     setLoading(false);
   };
 
-
   const handleSearch = async (e) => {
     e.preventDefault();
     const text = e.target.search.value.trim();
 
- 
     if (!text) return loadAllProducts();
 
     setLoading(true);
@@ -49,7 +46,6 @@ export default function Product() {
   return (
     <div className="min-h-screen p-6 bg-zinc-50 text-black">
       <div className="max-w-6xl mx-auto">
-
         <h1 className="text-2xl font-bold mb-6"> All Products</h1>
 
         <form onSubmit={handleSearch} className="flex gap-2 mb-6">
@@ -64,9 +60,7 @@ export default function Product() {
           </button>
         </form>
 
-   
         {loading && <p className="text-center">Loading...</p>}
-
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {products.map((p) => (
@@ -74,19 +68,15 @@ export default function Product() {
               key={p._id}
               className="border rounded p-3 bg-white shadow-sm flex flex-col"
             >
-         
               <img
                 src={p.image}
                 alt={p.title}
                 className="h-40 w-full object-cover rounded"
               />
 
-          
               <h2 className="font-semibold mt-2 line-clamp-1">{p.title}</h2>
 
-
               <p className="text-blue-600 font-bold mt-2">${p.price}</p>
-
 
               <button
                 onClick={() => handleView(p._id)}
@@ -98,7 +88,6 @@ export default function Product() {
           ))}
         </div>
 
-        
         {!loading && products.length === 0 && (
           <p className="text-center mt-10 text-gray-500">No products found.</p>
         )}

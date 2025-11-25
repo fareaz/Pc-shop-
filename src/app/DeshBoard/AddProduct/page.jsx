@@ -76,7 +76,7 @@ t
       setToast({ type: "info", msg: "Submitting..." });
 
     
-      const res = await fetch("http://localhost:5000/Product", {
+      const res = await fetch("https://pc-store-server.vercel.app/Product", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

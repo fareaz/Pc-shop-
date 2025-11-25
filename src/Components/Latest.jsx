@@ -6,12 +6,14 @@ export default function Latest() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/Product")
+    fetch(
+      "https://pc-store-server.vercel.app/Product"
+    )
       .then((res) => res.json())
       .then((data) => {
         const sorted = data
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-          .slice(0, 6); 
+          .slice(0, 6);
 
         setProducts(sorted);
       })
