@@ -1,7 +1,6 @@
 # 🖥️ PC Shop — Full Stack Next.js Project
 
-A modern PC Shop application built with **Next.js 16**, **Next Auth**, **Firebase**, and **MongoDB**.  
-This is my first full Next.js project where I learned routing, API integration, authentication, backend deployment, and state management.
+This is the first project I built using Next.js. I faced several challenges with routing, deployment, protected routes, and authentication. I tried to fix all of them; some were solved, but I couldn’t implement protected routes properly.
 
 ---
 
