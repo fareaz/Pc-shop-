@@ -2,41 +2,24 @@
 import Link from "next/link";
 
 
-export async function generateStaticParams() {
-  try {
-    const res = await fetch(
-      "https://pc-store-server-exno7bzzc-fareazs-projects.vercel.app/Product",
-      { next: { revalidate: 60 } }
-    );
 
-    if (!res.ok) return [];
-
-    const products = await res.json();
-   
-    const list = Array.isArray(products) ? products : products.result || [];
-
-    return list.map((p) => ({ id: String(p._id) }));
-  } catch (err) {
-    console.error("generateStaticParams error:", err);
-    return [];
-  }
-}
 
 export default async function ProductDetails({ params }) {
-  const { id } = params;
+  const { id } = await params;
+
 
  
   const res = await fetch(
-    `https://pc-store-server-exno7bzzc-fareazs-projects.vercel.app/Product/${id}`,
+    `https://pc-shop-server.onrender.com/product/${id}`,
     { next: { revalidate: 60 } } 
   );
-
+  console.log("Fetching product with ID:", res);
   if (!res.ok) {
     return (
       <main className="min-h-screen bg-zinc-50 text-black p-6">
         <div className="max-w-5xl mx-auto bg-white rounded-xl shadow p-6">
           <h1 className="text-xl font-semibold">Product not found</h1>
-          <p className="text-gray-600 mt-2">This product doesn't exist or couldn't be fetched.</p>
+          <p className="text-gray-600 mt-2">This product does not exist or could not be fetched.</p>
           <Link href="/Products">
             <button className="mt-4 px-4 py-2 border rounded-md">Back to products</button>
           </Link>

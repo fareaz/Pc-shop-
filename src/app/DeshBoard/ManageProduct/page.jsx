@@ -26,7 +26,7 @@ export default function ManageProduct() {
     setLoading(true);
     try {
       const res = await fetch(
-        `https://pc-store-server.vercel.app/product?email=${user.email}`
+        `https://pc-shop-server.onrender.com/product?email=${user.email}`
       );
       if (!res.ok) {
         const txt = await res.text();

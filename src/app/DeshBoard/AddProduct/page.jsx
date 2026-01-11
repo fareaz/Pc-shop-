@@ -49,8 +49,6 @@ export default function AddProductHook() {
     const fullDesc = values.fullDesc?.trim() || "";
     const price = Number(values.price);
     const image = values.image?.trim() || LOCAL_FALLBACK;
-
-t
     const submitterName = values.submitterName?.trim() || user?.displayName || "";
     const submitterEmail = values.submitterEmail?.trim() || user?.email || "";
 
@@ -76,7 +74,8 @@ t
       setToast({ type: "info", msg: "Submitting..." });
 
     
-      const res = await fetch("https://pc-store-server.vercel.app/Product", {
+      const res = await fetch("https://pc-shop-server.onrender.com/product", {
+      // const res = await fetch("http://localhost:5000/product", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

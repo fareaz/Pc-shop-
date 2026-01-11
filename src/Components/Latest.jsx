@@ -6,9 +6,7 @@ export default function Latest() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "https://pc-store-server.vercel.app/Product"
-    )
+    fetch("https://pc-shop-server.onrender.com/Product")
       .then((res) => res.json())
       .then((data) => {
         const sorted = data
